@@ -1,7 +1,10 @@
 "use client";
 
+import useLocalStorage from "@/hooks/useLocalStorage";
 import styles from "./index.module.css";
+
 export default function CreateTaskModal(props) {
+  const [value, setValue] = useLocalStorage("tasks", []);
   const onHandleSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData(e.target);
@@ -18,15 +21,12 @@ export default function CreateTaskModal(props) {
       important: important === "on" ? true : false,
     };
 
-    const response = await fetch("/api/tasks", {
-      method: "POST",
-      body: JSON.stringify(task),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const json = await response.json();
-    console.log(json);
+    if (!value) {
+      setValue([task]);
+      return;
+    }
+
+    setValue([...value, task]);
   };
   return (
     <div className={styles.createTask}>
