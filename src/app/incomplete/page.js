@@ -1,10 +1,9 @@
-import Tasks from "@/components/tasks";
 import styles from "./page.module.css";
 
-export default function Home() {
+export default function Incomplete() {
   return (
     <main className={styles.main}>
-      <Tasks />
+      <h1>Incomplete</h1>
     </main>
   );
 }

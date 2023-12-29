@@ -1,0 +1,15 @@
+.tasksContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 2rem;
+  background-color: #212121;
+  border: 2px solid #ffffff;
+  border-radius: 1rem;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.tasksContainer::-webkit-scrollbar {
+  width: 0.5rem;
+}

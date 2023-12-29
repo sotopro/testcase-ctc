@@ -1,10 +1,9 @@
-import Tasks from "@/components/tasks";
 import styles from "./page.module.css";
 
-export default function Home() {
+export default function Important() {
   return (
     <main className={styles.main}>
-      <Tasks />
+      <h1>Important</h1>
     </main>
   );
 }
