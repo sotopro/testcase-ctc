@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./index.module.css";
-import { MENU } from "@/app/constants/menu";
+import { MENU } from "@/constants/menu";
 import { useRouter, usePathname } from "next/navigation";
 
 function Sidebar() {

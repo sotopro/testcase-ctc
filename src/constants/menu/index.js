@@ -1,9 +1,4 @@
-import {
-  CheckIcon,
-  HomeIcon,
-  ListIcon,
-  TodoIcon,
-} from "@/app/components/icons";
+import { CheckIcon, HomeIcon, ListIcon, TodoIcon } from "@/components/icons";
 
 export const MENU = [
   {
