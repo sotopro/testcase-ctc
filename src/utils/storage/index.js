@@ -11,7 +11,8 @@ export const getStorage = (key, initialValue) => {
 };
 
 export const setStorage = (key, value) => {
-  if (typeof window !== "undefined" && window.localStorage) {
+  console.warn({ window });
+  if (typeof window !== "undefined") {
     try {
       if (localStorage.getItem(key) !== null) {
         const item = JSON.parse(localStorage.getItem(key));
@@ -19,6 +20,8 @@ export const setStorage = (key, value) => {
         window.localStorage.setItem(key, newItem);
         return newItem;
       }
+
+      console.warn({ setStorage: value });
 
       const newValue = JSON.stringify(value);
       window.localStorage.setItem(key, JSON.stringify(newValue));
@@ -30,7 +33,7 @@ export const setStorage = (key, value) => {
 };
 
 export const removeStorage = (key, id) => {
-  if (typeof window !== "undefined" && window.localStorage) {
+  if (typeof window !== "undefined") {
     try {
       const item = JSON.parse(localStorage.getItem(key));
       const newItem = item.filter((task) => task.id !== id);
