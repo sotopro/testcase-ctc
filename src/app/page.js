@@ -1,3 +1,4 @@
+"use client";
 import Tasks from "@/components/tasks";
 import styles from "./page.module.css";
 

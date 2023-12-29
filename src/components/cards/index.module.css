@@ -1,0 +1,125 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: #212121;
+  border: 2px solid #ffffff;
+  border-radius: 1rem;
+  overflow-y: auto;
+  min-width: 250px;
+  min-height: 230px;
+}
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 0.5rem 0;
+}
+.description {
+  font-size: 1rem;
+  padding: 0.5rem 0;
+}
+.date {
+  font-size: 0.75rem;
+  padding: 0.5rem 0;
+}
+.footer {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  gap: 1rem;
+}
+.completed {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex: 0.5;
+  padding: 0.5rem;
+  background-color: #6d72c3;
+  border: none;
+  font-size: small;
+  transition: all 0.5s ease;
+}
+
+.completed:hover {
+  cursor: pointer;
+  background-color: #5941a9;
+}
+
+.incomplete {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex: 0.5;
+  padding: 0.5rem;
+  background-color: #514f59;
+  border: none;
+  font-size: small;
+  transition: all 0.5s ease;
+}
+
+.incomplete:hover {
+  cursor: pointer;
+  background-color: #5941a9;
+}
+
+.edit {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex: 0.5;
+  padding: 0.5rem;
+  background-color: #5941a9;
+  border: none;
+  font-size: small;
+  transition: all 0.5s ease;
+}
+
+.edit:hover {
+  cursor: pointer;
+  background-color: #6d72c3;
+}
+
+.delete {
+  position: absolute;
+  color: #ffffff;
+  top: 1rem;
+  right: 1rem;
+  font-size: small;
+  transition: color 0.5s ease;
+}
+
+.delete:hover {
+  cursor: pointer;
+  color: #5941a9;
+}
+
+.card.new {
+  display: flex;
+  flex-direction: row;
+  padding: 2rem;
+  background-color: #514f59;
+  border: 2px solid #ffffff;
+  border-radius: 1rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.5s ease;
+}
+
+.card.new:hover {
+  cursor: pointer;
+  background-color: #5941a9;
+}
+
+.add {
+  font-size: large;
+  font-weight: bold;
+}
+
+.newTask {
+  font-size: large;
+}

@@ -1,10 +1,11 @@
 "use client";
 
-import useLocalStorage from "@/hooks/useLocalStorage";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 import styles from "./index.module.css";
 
-export default function CreateTaskModal(props) {
+export default function CreateTaskModal({ onClose, onCreateTask }) {
   const [value, setValue] = useLocalStorage("tasks", []);
+
   const onHandleSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData(e.target);
@@ -14,24 +15,21 @@ export default function CreateTaskModal(props) {
     const completed = data.get("completed");
     const important = data.get("important");
     const task = {
+      id: Date.now().toString(),
       title,
       description,
       date,
-      completed: completed === "on" ? true : false,
-      important: important === "on" ? true : false,
+      isCompleted: completed === "on" ? true : false,
+      isImportant: important === "on" ? true : false,
     };
-
-    if (!value) {
-      setValue([task]);
-      return;
-    }
-
-    setValue([...value, task]);
+    onClose();
+    onCreateTask(task);
   };
+
   return (
     <div className={styles.createTask}>
       <h2>Create Task</h2>
-      <form onSubmit={onHandleSubmit}>
+      <form className={styles.formContainer} onSubmit={onHandleSubmit}>
         <div className={styles.inputControl}>
           <label htmlFor="title">Title</label>
           <input
@@ -53,11 +51,11 @@ export default function CreateTaskModal(props) {
           <label htmlFor="date">Date</label>
           <input type="date" name="date" id="date" />
         </div>
-        <div className={styles.inputControl}>
+        <div className={styles.inputControlRow}>
           <label htmlFor="completed">Toggle Completed</label>
           <input type="checkbox" name="completed" id="completed" />
         </div>
-        <div className={styles.inputControl}>
+        <div className={styles.inputControlRow}>
           <label htmlFor="important">Toggle Important</label>
           <input type="checkbox" name="important" id="important" />
         </div>
