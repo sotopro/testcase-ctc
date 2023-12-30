@@ -34,6 +34,11 @@ export default function CreateTaskModal({ onClose, onCreateTask }) {
             name="title"
             id="title"
             placeholder="buy some milk"
+            maxLength={50}
+            pattern="^[a-zA-Z0-9 ]+$"
+            required
+            minLength={3}
+            title="Please enter a valid title"
           />
         </div>
         <div className={styles.inputControl}>
@@ -42,11 +47,16 @@ export default function CreateTaskModal({ onClose, onCreateTask }) {
             name="description"
             id="description"
             placeholder="go to the store and buy some milk"
+            maxLength={200}
+            pattern="^[a-zA-Z0-9 ]+$"
+            required
+            title="Please enter a valid description"
+            minLength={3}
           />
         </div>
         <div className={styles.inputControl}>
           <label htmlFor="date">Date</label>
-          <input type="date" name="date" id="date" />
+          <input type="date" name="date" id="date" required />
         </div>
         <div className={styles.inputControlRow}>
           <label htmlFor="isCompleted">Toggle Completed</label>
