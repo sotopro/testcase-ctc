@@ -5,7 +5,6 @@ function Cards({
   description,
   date,
   isCompleted,
-  isImportant,
   type = "task",
   onClick,
   onDelete,

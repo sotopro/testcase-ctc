@@ -4,7 +4,7 @@ import { useLocalStorage } from "@/hooks/useLocalStorage";
 import Cards from "../cards";
 import CreateTaskModal from "../modals/create-task";
 import styles from "./index.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Modal } from "../modals";
 import { createPortal } from "react-dom";
 
