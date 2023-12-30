@@ -9,6 +9,7 @@ function Cards({
   type = "task",
   onClick,
   onDelete,
+  onComplete,
   id,
 }) {
   if (type !== "task") {
@@ -29,11 +30,14 @@ function Cards({
       <p className={styles.date}>{date}</p>
       <div className={styles.footer}>
         {isCompleted ? (
-          <button className={styles.completed}>Completed</button>
+          <button className={styles.completed} onClick={() => onComplete(id)}>
+            Completed
+          </button>
         ) : (
-          <button className={styles.incomplete}>Incomplete</button>
+          <button className={styles.incomplete} onClick={() => onComplete(id)}>
+            Incomplete
+          </button>
         )}
-        <button className={styles.edit}>Edit</button>
       </div>
     </div>
   );

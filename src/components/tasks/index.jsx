@@ -11,8 +11,10 @@ import { createPortal } from "react-dom";
 function Tasks() {
   const [value, setValue] = useLocalStorage("tasks", []);
   const [isShowModal, setIsShowModal] = useState(false);
+  const [task, setTask] = useState(null);
 
   const onHandleModal = () => {
+    setTask(null);
     setIsShowModal(!isShowModal);
   };
 
@@ -30,6 +32,17 @@ function Tasks() {
     setValue([...value, task]);
   };
 
+  const onCompleteTask = (id) => {
+    const newValue = value.map((task) => {
+      if (task.id === id) {
+        return { ...task, isCompleted: !task.isCompleted };
+      }
+      return task;
+    });
+    setValue(newValue);
+    setTask(null);
+  };
+
   return (
     <div className={styles.tasksContainer}>
       <h1>Tasks</h1>
@@ -37,7 +50,12 @@ function Tasks() {
         {value &&
           value.length > 0 &&
           value.map((task) => (
-            <Cards key={task.id} {...task} onDelete={onHandleDelete} />
+            <Cards
+              key={task.id}
+              {...task}
+              onDelete={onHandleDelete}
+              onComplete={onCompleteTask}
+            />
           ))}
         <Cards type="new" onClick={onHandleModal} />
       </div>
@@ -47,6 +65,7 @@ function Tasks() {
             <CreateTaskModal
               onClose={onHandleModal}
               onDelete={onHandleDelete}
+              task={task}
               onCreateTask={onCreateTask}
             />
           </Modal>,

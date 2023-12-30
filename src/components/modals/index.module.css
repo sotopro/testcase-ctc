@@ -35,3 +35,10 @@
   display: flex;
   justify-content: space-evenly;
 }
+
+/* Mobile */
+@media (max-width: 700px) {
+  .modal {
+    width: 22rem;
+  }
+}

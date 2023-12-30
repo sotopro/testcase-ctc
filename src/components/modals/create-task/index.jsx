@@ -1,19 +1,17 @@
 "use client";
 
-import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { useState } from "react";
 import styles from "./index.module.css";
 
 export default function CreateTaskModal({ onClose, onCreateTask }) {
-  const [value, setValue] = useLocalStorage("tasks", []);
-
   const onHandleSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData(e.target);
     const title = data.get("title");
     const description = data.get("description");
     const date = data.get("date");
-    const completed = data.get("completed");
-    const important = data.get("important");
+    const completed = data.get("isCompleted");
+    const important = data.get("isImportant");
     const task = {
       id: Date.now().toString(),
       title,
@@ -22,8 +20,8 @@ export default function CreateTaskModal({ onClose, onCreateTask }) {
       isCompleted: completed === "on" ? true : false,
       isImportant: important === "on" ? true : false,
     };
-    onClose();
     onCreateTask(task);
+    onClose();
   };
 
   return (
@@ -52,15 +50,15 @@ export default function CreateTaskModal({ onClose, onCreateTask }) {
           <input type="date" name="date" id="date" />
         </div>
         <div className={styles.inputControlRow}>
-          <label htmlFor="completed">Toggle Completed</label>
-          <input type="checkbox" name="completed" id="completed" />
+          <label htmlFor="isCompleted">Toggle Completed</label>
+          <input type="checkbox" name="isCompleted" id="isCompleted" />
         </div>
         <div className={styles.inputControlRow}>
-          <label htmlFor="important">Toggle Important</label>
-          <input type="checkbox" name="important" id="important" />
+          <label htmlFor="isImportant">Toggle Important</label>
+          <input type="checkbox" name="isImportant" id="isImportant" />
         </div>
         <button type="submit" className={styles.submitButton}>
-          Create
+          Create Task
         </button>
       </form>
     </div>

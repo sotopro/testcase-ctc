@@ -93,3 +93,10 @@
 .active::before {
   width: 0.5rem;
 }
+
+/* Mobile */
+@media (max-width: 700px) {
+  .navItems {
+    padding: 1rem 0rem;
+  }
+}
